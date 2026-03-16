@@ -1,4 +1,6 @@
-const px: React.CSSProperties = { imageRendering: "pixelated" };
+import type { CSSProperties } from "react";
+
+const px: CSSProperties = { imageRendering: "pixelated" };
 const SZ = 20; // display px
 
 /** ✈️ 비행기 */

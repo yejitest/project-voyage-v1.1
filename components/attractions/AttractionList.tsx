@@ -1,5 +1,6 @@
 "use client";
 
+import type { ComponentType } from "react";
 import type { Attraction, AttractionCategory } from "@/lib/types";
 import AttractionItem from "./AttractionItem";
 import {
@@ -11,7 +12,7 @@ import {
 
 const CATEGORY_CONFIG: Record<
   AttractionCategory,
-  { label: string; Icon: React.ComponentType<{ size?: number }> }
+  { label: string; Icon: ComponentType<{ size?: number }> }
 > = {
   "history-culture": { label: "역사·문화", Icon: HistoryCultureIcon },
   "nature-relaxation": { label: "자연·휴양", Icon: NatureRelaxIcon },

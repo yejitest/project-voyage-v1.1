@@ -1,4 +1,6 @@
-const pixelStyle: React.CSSProperties = { imageRendering: "pixelated" };
+import type { CSSProperties } from "react";
+
+const pixelStyle: CSSProperties = { imageRendering: "pixelated" };
 
 export function LogoIcon({ size = 28 }: { size?: number }) {
   return (

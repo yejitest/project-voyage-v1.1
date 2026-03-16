@@ -1,8 +1,9 @@
 "use client";
 
+import type { CSSProperties } from "react";
 import { formatKoreanDate } from "@/lib/utils/dateUtils";
 
-const pixelStyle: React.CSSProperties = { imageRendering: "pixelated" };
+const pixelStyle: CSSProperties = { imageRendering: "pixelated" };
 
 /** 비행기 SVG (컨트레일 내장, viewBox 0 0 34 10) */
 function PixelAirplane({ size = 52 }: { size?: number }) {

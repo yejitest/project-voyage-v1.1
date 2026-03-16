@@ -1,6 +1,7 @@
 "use client";
 
 import { useState, useCallback } from "react";
+import type { CSSProperties, MouseEvent } from "react";
 import Image from "next/image";
 import type { Destination } from "@/lib/types";
 import { StarIcon, HeartPixelIcon } from "@/components/icons/PixelIcons";
@@ -27,7 +28,7 @@ export default function DestinationCard({ destination }: DestinationCardProps) {
   const [liked, setLiked] = useState(false);
   const [burst, setBurst] = useState(false);
 
-  const handleLike = useCallback((e: React.MouseEvent) => {
+  const handleLike = useCallback((e: MouseEvent) => {
     e.stopPropagation();
     setLiked((prev) => !prev);
     setBurst(true);
@@ -65,7 +66,7 @@ export default function DestinationCard({ destination }: DestinationCardProps) {
                 "--px-tx": `${p.tx}px`,
                 "--px-ty": `${p.ty}px`,
                 animationDelay: `${i * 18}ms`,
-              } as React.CSSProperties}
+              } as CSSProperties}
             />
           ))}
 

@@ -1,5 +1,6 @@
 "use client";
 
+import type { ComponentType } from "react";
 import useStore from "@/lib/store/useStore";
 import type { Region } from "@/lib/types";
 import {
@@ -9,7 +10,7 @@ import {
   OceaniaIcon,
 } from "@/components/icons/PixelIcons";
 
-const FILTERS: { value: Region | "all"; label: string; Icon: React.ComponentType<{ size?: number }> }[] = [
+const FILTERS: { value: Region | "all"; label: string; Icon: ComponentType<{ size?: number }> }[] = [
   { value: "asia", label: "아시아", Icon: AsiaIcon },
   { value: "europe", label: "유럽", Icon: EuropeIcon },
   { value: "americas", label: "아메리카", Icon: AmericasIcon },

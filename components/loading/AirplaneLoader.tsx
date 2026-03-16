@@ -157,7 +157,6 @@ export default function AirplaneLoader({ checkIn, checkOut }: AirplaneLoaderProp
           className="absolute"
           style={{
             top: "50%",
-            translateY: "-50%",
             transform: "translateY(-50%)",
             animation: "fly 2.8s cubic-bezier(0.4,0,0.6,1) infinite",
           }}

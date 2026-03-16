@@ -1,65 +1,82 @@
-import Image from "next/image";
+import Header from "@/components/layout/Header";
+import Marquee from "@/components/layout/Marquee";
+import DateRangePicker from "@/components/calendar/DateRangePicker";
+import ResultsSection from "@/components/results/ResultsSection";
+import DestinationModal from "@/components/modals/DestinationModal";
+import AttractionModal from "@/components/modals/AttractionModal";
+import PixelHeroScene from "@/components/hero/PixelHeroScene";
 
-export default function Home() {
+export default function HomePage() {
   return (
-    <div className="flex min-h-screen items-center justify-center bg-zinc-50 font-sans dark:bg-black">
-      <main className="flex min-h-screen w-full max-w-3xl flex-col items-center justify-between py-32 px-16 bg-white dark:bg-black sm:items-start">
-        <Image
-          className="dark:invert"
-          src="/next.svg"
-          alt="Next.js logo"
-          width={100}
-          height={20}
-          priority
-        />
-        <div className="flex flex-col items-center gap-6 text-center sm:items-start sm:text-left">
-          <h1 className="max-w-xs text-3xl font-semibold leading-10 tracking-tight text-black dark:text-zinc-50">
-            To get started, edit the page.tsx file.
-          </h1>
-          <p className="max-w-md text-lg leading-8 text-zinc-600 dark:text-zinc-400">
-            Looking for a starting point or more instructions? Head over to{" "}
-            <a
-              href="https://vercel.com/templates?framework=next.js&utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-              className="font-medium text-zinc-950 dark:text-zinc-50"
+    <>
+      <Header />
+
+      <main>
+        {/* ① 히어로 */}
+        <section className="max-w-[1280px] mx-auto px-6 pt-16 pb-10 flex items-center justify-between gap-8 overflow-hidden">
+          {/* 텍스트 (왼쪽) */}
+          <div className="max-w-[480px] flex-shrink-0">
+            <p className="text-xs font-bold text-purple-600 uppercase tracking-wider mb-4">
+              TRAVEL CURATION
+            </p>
+            <h1
+              className="font-extrabold text-ink tracking-tighter leading-none mb-5"
+              style={{ fontSize: "clamp(56px, 8vw, 96px)" }}
             >
-              Templates
-            </a>{" "}
-            or the{" "}
-            <a
-              href="https://nextjs.org/learn?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-              className="font-medium text-zinc-950 dark:text-zinc-50"
-            >
-              Learning
-            </a>{" "}
-            center.
-          </p>
-        </div>
-        <div className="flex flex-col gap-4 text-base font-medium sm:flex-row">
-          <a
-            className="flex h-12 w-full items-center justify-center gap-2 rounded-full bg-foreground px-5 text-background transition-colors hover:bg-[#383838] dark:hover:bg-[#ccc] md:w-[158px]"
-            href="https://vercel.com/new?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            <Image
-              className="dark:invert"
-              src="/vercel.svg"
-              alt="Vercel logomark"
-              width={16}
-              height={16}
-            />
-            Deploy Now
-          </a>
-          <a
-            className="flex h-12 w-full items-center justify-center rounded-full border border-solid border-black/[.08] px-5 transition-colors hover:border-transparent hover:bg-black/[.04] dark:border-white/[.145] dark:hover:bg-[#1a1a1a] md:w-[158px]"
-            href="https://nextjs.org/docs?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            Documentation
-          </a>
-        </div>
+              Just
+              <br />
+              Go.
+            </h1>
+            <p className="text-base text-gray-500 max-w-[420px] leading-relaxed">
+              일정만 고르면 됩니다.
+              <br />
+              비행 시간 고려해서 진짜 갈 수 있는 여행지만 추려드립니다.
+            </p>
+          </div>
+
+          {/* 픽셀 씬 (오른쪽 — lg 이상에서만 노출) */}
+          <div className="hidden lg:block flex-1 min-w-0">
+            <PixelHeroScene />
+          </div>
+        </section>
+
+        {/* ② Stats */}
+        <section className="max-w-[1280px] mx-auto px-6 pb-12">
+          <div className="flex items-center gap-8 flex-wrap">
+            {[
+              { value: "2,400+", label: "여행지" },
+              { value: "98%", label: "만족도" },
+            ].map(({ value, label }) => (
+              <div key={label} className="flex items-baseline gap-2">
+                <span className="text-[28px] font-extrabold text-ink tracking-tight">
+                  {value}
+                </span>
+                <span className="text-sm font-semibold text-gray-500">{label}</span>
+              </div>
+            ))}
+          </div>
+        </section>
+
+        {/* ③ 달력 */}
+        <section className="max-w-[1280px] mx-auto px-6 pb-10">
+          <div className="max-w-[860px]">
+            <p className="text-[15px] font-bold text-ink mb-5">
+              📅 출발일 — 귀국일 선택
+            </p>
+            <DateRangePicker />
+          </div>
+        </section>
+
+        {/* ④ 결과 — 날짜 선택 후 로딩 → 여행지 카드 */}
+        <ResultsSection />
       </main>
-    </div>
+
+      {/* ⑤ 마퀴 */}
+      <Marquee />
+
+      {/* 모달 레이어 */}
+      <DestinationModal />
+      <AttractionModal />
+    </>
   );
 }
